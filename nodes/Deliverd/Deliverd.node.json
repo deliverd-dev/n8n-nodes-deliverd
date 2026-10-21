@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-deliverd.deliverd",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Productivity", "Development"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/deliverd-dev/n8n-nodes-deliverd#credentials"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/deliverd-dev/n8n-nodes-deliverd#readme"
+			}
+		]
+	}
+}

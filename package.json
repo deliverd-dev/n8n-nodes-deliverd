@@ -1,0 +1,50 @@
+{
+  "name": "n8n-nodes-deliverd",
+  "version": "0.1.0",
+  "description": "Ask a person to approve a step of an n8n workflow, and wait for their decision. The Deliverd node for n8n.",
+  "license": "MIT",
+  "homepage": "https://github.com/deliverd-dev/n8n-nodes-deliverd#readme",
+  "keywords": [
+    "n8n-community-node-package",
+    "deliverd",
+    "approval",
+    "human-in-the-loop"
+  ],
+  "author": {
+    "name": "Deliverd",
+    "email": "support@deliverd.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deliverd-dev/n8n-nodes-deliverd.git"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --experimental-strip-types test/*.test.mts",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/DeliverdApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Deliverd/Deliverd.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "0.52.4",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
