@@ -31,6 +31,7 @@ test('the request body carries what was set and nothing that was not', () => {
 				input: '{"amount": 120, "currency": "EUR"}',
 				editableFields: 'amount',
 				externalId: 'order-4411',
+				flowId: ' 7d1c0a52-3f9e-4b8a-9c41-2b6f0e8d9a10 ',
 				expiresInMinutes: 30,
 			},
 			{ callbackUrl: 'https://n8n.example.com/webhook-waiting/7?signature=x', metadata: { n8n: {} } },
@@ -44,6 +45,7 @@ test('the request body carries what was set and nothing that was not', () => {
 			input: { amount: 120, currency: 'EUR' },
 			editableFields: ['amount'],
 			externalId: 'order-4411',
+			flowId: '7d1c0a52-3f9e-4b8a-9c41-2b6f0e8d9a10',
 			expiresAt: '2026-10-15T12:30:00.000Z',
 			callbackUrl: 'https://n8n.example.com/webhook-waiting/7?signature=x',
 			metadata: { n8n: {} },
@@ -60,6 +62,7 @@ test('a mistake in the settings raises no request', () => {
 	assert.throws(() => requestBody('x', { input: '{"a":1}', editableFields: 'b' }), /"b"/);
 	assert.throws(() => requestBody('x', { editableFields: 'a' }), /"a"/);
 	assert.throws(() => requestBody('x', { expiresInMinutes: 0 }), /minutes/);
+	assert.throws(() => requestBody('x', { flowId: 'release-4.2' }), /Flow ID/);
 });
 
 test('the callback method refuses an n8n Deliverd cannot reach, and says what to do', () => {

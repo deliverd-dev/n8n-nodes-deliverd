@@ -198,6 +198,14 @@ export class Deliverd implements INodeType {
 							'When the request expires undecided. Ask and Wait stops waiting then, and outputs the expired request.',
 					},
 					{
+						displayName: 'Flow ID',
+						name: 'flowId',
+						type: 'string',
+						default: '',
+						description:
+							'The ID of a project (flow) for the request to join, so it sits on one timeline with the rest of that work. The project must be open.',
+					},
+					{
 						displayName: 'Input',
 						name: 'input',
 						type: 'json',

@@ -29,6 +29,8 @@ export interface AskOptions {
 	input?: string | Record<string, unknown>;
 	editableFields?: string;
 	externalId?: string;
+	/** The project (flow) the request joins, by id. */
+	flowId?: string;
 	/** Minutes until the request expires undecided. */
 	expiresInMinutes?: number;
 }
@@ -75,6 +77,11 @@ export function requestBody(
 		}
 	}
 
+	const flowId = options.flowId?.trim() || undefined;
+	if (flowId && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(flowId)) {
+		throw new Error(`Flow ID is the id of a project (flow), a UUID, not "${flowId}".`);
+	}
+
 	const approvers = list(options.approvers);
 	const minutes = options.expiresInMinutes;
 	if (minutes !== undefined && !(minutes > 0)) {
@@ -89,6 +96,7 @@ export function requestBody(
 		input,
 		editableFields: editable.length > 0 ? editable : undefined,
 		externalId: options.externalId?.trim() || undefined,
+		flowId,
 		expiresAt: minutes ? new Date(now + minutes * 60_000).toISOString() : undefined,
 		callbackUrl: extra.callbackUrl,
 		metadata: extra.metadata,
