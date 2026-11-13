@@ -17,14 +17,14 @@ export class DeliverdApi implements ICredentialType {
 
 	properties: INodeProperties[] = [
 		{
-			displayName: 'API Token',
+			displayName: 'Agent Key',
 			name: 'token',
 			type: 'string',
 			typeOptions: { password: true },
 			default: '',
 			required: true,
 			description:
-				'Create one in Deliverd under Settings → API tokens, with approvals:write and approvals:read',
+				'An agent key: in Deliverd, Agents → Agents, register an agent called n8n with approvals:write and approvals:read. Not your own token: nobody can approve a request raised under their own name.',
 		},
 		{
 			displayName: 'URL',

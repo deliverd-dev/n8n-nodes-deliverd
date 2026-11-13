@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-deliverd",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Ask a person to approve a step of an n8n workflow, and wait for their decision. The Deliverd node for n8n.",
   "license": "MIT",
   "homepage": "https://github.com/deliverd-dev/n8n-nodes-deliverd#readme",

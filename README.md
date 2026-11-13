@@ -21,9 +21,12 @@ In n8n: **Settings → Community Nodes → Install**, and enter
 ## Credentials
 
 1. Sign up at [deliverd.dev](https://deliverd.dev). It is free to start.
-2. In Deliverd, create a token under **Settings → API tokens** with
-   `approvals:write` and `approvals:read`.
-3. In n8n, add a **Deliverd API** credential and paste the token. Leave the URL
+2. In Deliverd, go to **Agents → Agents**, register an agent called n8n and
+   copy its key, with `approvals:write` and `approvals:read`. Use an agent key
+   rather than your own API token: nobody can approve a request raised under
+   their own name, so a request made with your token could not be approved by
+   you.
+3. In n8n, add a **Deliverd API** credential and paste the key. Leave the URL
    as `https://deliverd.dev` unless your organisation uses its own address.
 
 ## Operations
@@ -48,6 +51,12 @@ name the ones the approver may change in **Editable Fields**. When it is
 approved, `approvedInput` holds the values to use, with any corrections. It is
 `null` unless the request was approved, so nothing downstream can run with
 values nobody agreed to.
+
+### Keep it with the rest of the work
+
+Put a project's id in **Options → Flow ID** and the request joins that
+project (a flow, in the API), on one timeline with the approvals, reviews and
+reports that belong to the same piece of work. The project must be open.
 
 ## Waiting
 
